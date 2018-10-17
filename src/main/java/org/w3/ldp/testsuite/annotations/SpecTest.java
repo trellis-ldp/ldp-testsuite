@@ -33,18 +33,20 @@ public @interface SpecTest {
 		/**
 		 * WG_CLARIFICATION - requires further clarification from the working group
 		 */
-		WG_CLARIFICATION		
+		WG_CLARIFICATION
 	}
 
 	;
 
 	/**
 	 * The URI of the spec
+	 * @return the specification URI
 	 */
 	public String specRefUri() default "No Specification URI";
 
 	/**
 	 * The status of the test case, pending or approved
+	 * @return the test case status
 	 */
 	public STATUS approval() default STATUS.WG_PENDING;
 
@@ -59,11 +61,11 @@ public @interface SpecTest {
 		AUTOMATED,
 
 		/** MANUAL - server test but not automated */
-		MANUAL, 
-		
+		MANUAL,
+
 		/** CLIENT_ONLY - test is only client-side, this test suite doesn't test it. */
 		CLIENT_ONLY,
-		
+
 		/**
 		 * INDIRECT - other test cases indirectly cover this test case
 		 */
@@ -72,6 +74,7 @@ public @interface SpecTest {
 
 	/**
 	 * Whether the test case itself has been implemented or not
+	 * @return whether the test case has been implemented
 	 */
 	public METHOD testMethod() default METHOD.NOT_IMPLEMENTED;
 
@@ -81,24 +84,27 @@ public @interface SpecTest {
 	 * the comment can be used to describe whether the test only
 	 * covers part of the spec requirement
 	 * ie) Shared specRefUri
+	 * @return the comment
 	 */
 	public String comment() default "";
-	
+
 	/**
 	 * Steps needed to be taken to validate the test.  For manual/client tests
-	 * it specify the actions (step) what should be done to verify the result.  
+	 * it specify the actions (step) what should be done to verify the result.
 	 * For automation tests, it summarized what the automated test does.
 	 * @return String[] The steps
 	 */
 	public String[] steps() default {};
-	
+
 	/**
 	 * List out the test class that covers an indirect test.
+	 * @return the class name
 	 */
 	public Class<?>[] coveredByTests() default {};
-	
+
 	/**
 	 * List out the group values that covers the indirect test.
+	 * @return the values for the indirect test
 	 */
 	public String[] coveredByGroups() default {};
 

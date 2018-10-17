@@ -69,7 +69,8 @@ public abstract class LdpTest {
 
 	/**
 	 * Builds a model from a turtle representation in a file
-	 * @param path
+	 * @param path the path
+	 * @return the model
 	 */
 	protected Model readModel(String path) {
 		Model model = null;
@@ -106,8 +107,11 @@ public abstract class LdpTest {
 	 * at the beginning of the test suite, so postModel static field
 	 * will be assigned once too.
 	 *
+	 * @param outputDir the output directory
 	 * @param postTtl the resource with Turtle content to use for POST requests
 	 * @param httpLogging whether to log HTTP request and response details on errors
+	 * @param skipLogging whether to skip logging
+	 * @throws IOException if an I/O exception occurs during setup
 	 */
 	@BeforeSuite(alwaysRun = true)
 	@Parameters({"output", "postTtl", "httpLogging", "skipLogging"})
@@ -122,7 +126,7 @@ public abstract class LdpTest {
 
 		if (outputDir == null || outputDir.length() == 0)
 			outputDir = LdpTestSuite.OUTPUT_DIR;
-		
+
 		File dir = new File(outputDir);
 		dir.mkdirs();
 
@@ -237,9 +241,9 @@ public abstract class LdpTest {
 	 * don't always match the request-URI.  This attempts to resolve to the appropriate
 	 * resource for the request-URI.  This method is used to determine which subject
 	 * URI should be used to assign new triples to for tests such as PUT.
-	 * 
-	 * @param model
-	 * @param location
+	 *
+	 * @param model the model
+	 * @param location the location
 	 * @return Resource primary from model
 	 */
 	protected Resource getPrimaryTopic(Model model, String location) {
@@ -292,6 +296,7 @@ public abstract class LdpTest {
 	 * @param response
 	 *            the HTTP response
 	 * @see <a href="http://tools.ietf.org/html/rfc5988">RFC 5988</a>
+	 * @return whether the expected link header is present
 	 */
 	protected boolean containsLinkHeader(
 			String linkContext,
