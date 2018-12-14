@@ -53,13 +53,6 @@ public class LdpTestListener extends TestListenerAdapter {
 			errors.append(WordUtils.wrap(description, 78));
 			errors.append("\n");
 		}
-
-		Throwable thrown = tr.getThrowable();
-		if (thrown != null) {
-			errors.append("\n");
-			errors.append(Utils.stackTrace(thrown, false)[0]);
-			errors.append("\n");
-		}
     }
 
 	@Override
