@@ -1,0 +1,17 @@
+language: java
+
+jdk: oraclejdk8
+
+install: mvn install -DskipTests -Dgpg.skip -Dmaven.javadoc.skip -B -V
+script: mvn verify
+after_success: mkdir -p ldp && mv target/ldp-testsuite-0.2.0-SNAPSHOT-shaded.jar ldp/ldp-testsuite.jar
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: $AWS_BUCKET
+  skip_cleanup: true
+  local_dir: ldp
+  upload-dir: ldp
+  default_text_charset: 'utf-8'
