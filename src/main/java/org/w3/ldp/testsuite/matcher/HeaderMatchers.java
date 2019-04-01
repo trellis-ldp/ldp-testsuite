@@ -106,7 +106,7 @@ public class HeaderMatchers {
 	 * @return the matcher
 	 */
 	public static Matcher<String> isJsonLdCompatibleContentType() {
-		return new CustomTypeSafeMatcher<String>("application/ld+json or application/json") {
+		return new CustomTypeSafeMatcher<String>("application/ld+json") {
 			@Override
 			protected boolean matchesSafely(String item) {
 				return item.equals(MediaTypes.APPLICATION_LD_JSON) || item.equals(MediaTypes.APPLICATION_JSON);
