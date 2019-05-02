@@ -3,7 +3,7 @@ language: java
 jdk: openjdk8
 
 install: mvn install -DskipTests -Dgpg.skip -Dmaven.javadoc.skip -B -V
-script: mvn verify -Dgpg.skip
+script: mvn verify -Dgpg.skip -Dmaven.javadoc.skip
 after_success: mkdir -p ldp && mv target/ldp-testsuite-0.2.0-SNAPSHOT-shaded.jar ldp/ldp-testsuite.jar
 
 deploy:
