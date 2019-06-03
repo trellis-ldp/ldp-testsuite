@@ -102,5 +102,15 @@ public class MemberResourceTest extends RdfSourceTest {
 		if (container != null) {
 			buildBaseRequestSpecification().delete(memberResource);
 		}
+		if (httpLog != null) {
+			httpLog.println();
+			httpLog.flush();
+			httpLog.close();
+		}
+		if (skipLog != null) {
+			skipLog.println();
+			skipLog.flush();
+			skipLog.close();
+		}
 	}
 }

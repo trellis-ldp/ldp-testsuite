@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang3.StringUtils;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -500,4 +501,17 @@ public class PagingTest extends LdpTest{
 		return spec;
 	}
 	
+    @AfterSuite(alwaysRun = true)
+    public void commonTearDown() {
+        if (httpLog != null) {
+            httpLog.println();
+            httpLog.flush();
+            httpLog.close();
+        }
+        if (skipLog != null) {
+            skipLog.println();
+            skipLog.flush();
+            skipLog.close();
+        }
+    }
 }

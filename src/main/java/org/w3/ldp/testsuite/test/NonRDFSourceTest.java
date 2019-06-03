@@ -215,7 +215,7 @@ public class NonRDFSourceTest extends CommonResourceTest {
 		String location = response.getHeader(LOCATION);
 
 		try {
-			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, container, response);
+			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, location, response);
 			Assert.assertNotNull(associatedRdfSource, "No Link response header with relation \"describedby\" " +
 					"and anchor parameter matching the newly-created resource URI");
 
@@ -364,7 +364,7 @@ public class NonRDFSourceTest extends CommonResourceTest {
 		boolean deleted = false;
 
 		try {
-			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, container, postResponse);
+			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, location, postResponse);
 			Assert.assertNotNull(associatedRdfSource, "No Link response header with relation \"describedby\" " +
 					"and anchor parameter matching the newly-created resource URI");
 
@@ -434,7 +434,7 @@ public class NonRDFSourceTest extends CommonResourceTest {
 		String location = postResponse.getHeader(LOCATION);
 
 		try {
-			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, container, postResponse);
+			String associatedRdfSource = getFirstLinkForRelation(location, LINK_REL_DESCRIBEDBY, location, postResponse);
 			Assert.assertNotNull(associatedRdfSource, "No Link response header with relation \"describedby\" " +
 					"and anchor parameter matching the newly-created resource URI");
 

@@ -10,6 +10,7 @@ import org.apache.jena.rdf.model.Statement;
 import com.jayway.restassured.response.Response;
 
 import org.apache.http.HttpStatus;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -250,4 +251,17 @@ public class IndirectContainerTest extends CommonContainerTest {
 		return model;
 	}
 
+	@AfterSuite(alwaysRun = true)
+	public void commonTearDown() {
+		if (httpLog != null) {
+			httpLog.println();
+			httpLog.flush();
+			httpLog.close();
+		}
+		if (skipLog != null) {
+			skipLog.println();
+			skipLog.flush();
+			skipLog.close();
+		}
+	}
 }

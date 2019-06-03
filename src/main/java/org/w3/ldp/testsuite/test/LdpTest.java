@@ -14,7 +14,6 @@ import com.jayway.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.marmotta.commons.vocabulary.LDP;
 import org.jboss.resteasy.plugins.delegates.LinkDelegate;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -154,20 +153,6 @@ public abstract class LdpTest {
 			}
 		}
 
-	}
-
-	@AfterSuite(alwaysRun = true)
-	public void commonTearDown() {
-		if (httpLog != null) {
-			httpLog.println();
-			httpLog.flush();
-			httpLog.close();
-		}
-		if (skipLog != null) {
-			skipLog.println();
-			skipLog.flush();
-			skipLog.close();
-		}
 	}
 
 	/**
