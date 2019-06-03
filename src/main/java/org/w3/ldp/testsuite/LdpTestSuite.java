@@ -12,7 +12,6 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.lang3.StringUtils;
@@ -453,8 +452,8 @@ public class LdpTestSuite {
 	}
 
 	@SuppressWarnings("static-access")
-	public static OptionGroup addCommonOptions() {
-		OptionGroup common = new OptionGroup();
+	public static Options addCommonOptions() {
+		Options common = new Options();
 		common.addOption(OptionBuilder.withLongOpt("server")
 				.withDescription("server url to run the test suite").hasArg()
 				.withArgName("server").isRequired().create());
@@ -502,8 +501,8 @@ public class LdpTestSuite {
 	}
 
 	@SuppressWarnings("static-access")
-	public static OptionGroup addEarlOptions() {
-		OptionGroup earl = new OptionGroup();
+	public static Options addEarlOptions() {
+		Options earl = new Options();
 		// --earl dependent values
 		earl.addOption(OptionBuilder
 				.withLongOpt("software")

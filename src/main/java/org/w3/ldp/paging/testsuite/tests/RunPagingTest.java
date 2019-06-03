@@ -16,8 +16,8 @@ public class RunPagingTest {
 	public static void main(String[] args){
 		Logger.getRootLogger().setLevel(Level.OFF);
 		
-		options.addOptionGroup(LdpTestSuite.addCommonOptions());
-		options.addOptionGroup(LdpTestSuite.addEarlOptions());
+		LdpTestSuite.addCommonOptions().getOptions().forEach(options::addOption);
+		LdpTestSuite.addEarlOptions().getOptions().forEach(options::addOption);
 
 		// Add classes we want to test
 		final List<XmlClass> classes = new ArrayList<>();
