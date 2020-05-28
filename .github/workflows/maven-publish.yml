@@ -1,9 +1,8 @@
 name: Maven Package
 
 on:
-  push:
-    tags:
-      - ldp-testsuite-[0-9]+.[0-9]+.[0-9]+
+  release:
+    types: [created]
 
 jobs:
   build:
