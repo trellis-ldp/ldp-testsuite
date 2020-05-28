@@ -1,14 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
-    <groupId>org.w3</groupId>
+    <groupId>org.trellisldp</groupId>
     <artifactId>ldp-testsuite</artifactId>
     <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -38,10 +31,11 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:w3c/ldp-testsuite.git</connection>
-        <developerConnection>scm:git:git@github.com:w3c/ldp-testsuite.git</developerConnection>
-        <url>git@github.com:w3c/ldp-testsuite.git</url>
-    </scm>
+        <connection>scm:git:git@github.com:trellis-ldp/ldp-testsuite.git</connection>
+        <developerConnection>scm:git:git@github.com:trellis-ldp/ldp-testsuite.git</developerConnection>
+        <url>git@github.com:trellis-ldp/ldp-testsuite.git</url>
+      <tag>HEAD</tag>
+  </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -123,16 +117,14 @@
                     <shadedArtifactAttached>true</shadedArtifactAttached>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <transformers>
-                        <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <manifestEntries>
                                 <Main-Class>${app.main.class}</Main-Class>
                                 <X-Compile-Source-JDK>${project.build.sourceEncoding}</X-Compile-Source-JDK>
                                 <X-Compile-Target-JDK>${project.build.sourceEncoding}</X-Compile-Target-JDK>
                             </manifestEntries>
                         </transformer>
-                        <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                     </transformers>
                 </configuration>
                 <executions>
@@ -171,20 +163,6 @@
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -299,6 +277,14 @@
           <version>1.2.17</version>
         </dependency>
     </dependencies>
+
+   <distributionManagement>
+      <repository>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/trellis-ldp/ldp-testsuite</url>
+      </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>
