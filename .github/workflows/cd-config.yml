@@ -20,9 +20,7 @@ jobs:
         java-version: 8
 
     - name: Build with Maven
-      run: |
-        mvn install -Dgpg.skip -DskipTests -Dmaven.javadoc.skip -B -V
-        mvn verify -Dgpg.skip -Dmaven.javadoc.skip
+      run: mvn -B -ntp verify -Dgpg.skip -Dmaven.javadoc.skip
 
     - name: Sync to AWS S3
       uses: jakejarvis/s3-sync-action@v0.5.1

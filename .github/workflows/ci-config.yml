@@ -22,7 +22,5 @@ jobs:
         java-version: 8
 
     - name: Build with Maven
-      run: |
-        mvn install -Dgpg.skip -DskipTests -Dmaven.javadoc.skip -B -V
-        mvn verify -Dgpg.skip -Dmaven.javadoc.skip
+      run: mvn -B -ntp install -Dgpg.skip -Dmaven.javadoc.skip
 
