@@ -10,3 +10,8 @@ updates:
     versions:
     - ">= 7.a"
     - "< 8"
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "monthly"
+
