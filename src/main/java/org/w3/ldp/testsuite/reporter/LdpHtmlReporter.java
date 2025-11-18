@@ -650,7 +650,7 @@ public class LdpHtmlReporter implements IReporter {
 		html.table(class_("indented"));
 		html.tr(class_("center")).th(class_("Failed")).content("[FAILED TEST]")
 				._tr();
-		html.tr().td(class_("throw")).content(Utils.stackTrace(thrown, false)[0])._tr();
+		html.tr().td(class_("throw")).content(Utils.shortStackTrace(thrown, false))._tr();
 
 		html._table();
 

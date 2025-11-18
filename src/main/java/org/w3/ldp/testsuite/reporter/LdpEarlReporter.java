@@ -314,7 +314,7 @@ public class LdpEarlReporter extends AbstractEarlReporter implements IReporter {
 			resource.addProperty(DCTerms.description, thrown.getMessage());
 		else
 			resource.addLiteral(DCTerms.description,
-					Utils.stackTrace(thrown, false)[0]);
+					Utils.shortStackTrace(thrown, false));
 	}
 
 	private String  findTestResult(String methodName) {
